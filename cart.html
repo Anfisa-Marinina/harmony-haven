@@ -411,6 +411,108 @@
             margin-top: 20px;
             font-size: 18px;
         }
+        /* Responsywność - Media Queries */
+
+/* Dla urządzeń o szerokości do 768px (tablety, większe telefony) */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    header .logo {
+        font-size: 1.6rem;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content button {
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
+
+    .products {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-card {
+        width: 80%;
+    }
+}
+
+/* Dla urządzeń o szerokości do 480px (standardowe telefony) */
+@media (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    header .logo {
+        font-size: 1.4rem;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 12px;
+        padding-left: 0;
+    }
+
+    .hero-content h1 {
+        font-size: 1.6rem;
+    }
+
+    .hero-content button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .product-card {
+        width: 90%;
+        padding: 15px;
+    }
+
+    footer {
+        font-size: 0.9rem;
+    }
+}
+
+/* Dla urządzeń o szerokości do 320px (najmniejsze telefony) */
+@media (max-width: 320px) {
+    header .logo {
+        font-size: 1.2rem;
+    }
+
+    header nav ul {
+        gap: 8px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.4rem;
+    }
+
+    .hero-content button {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
+    .product-card {
+        width: 100%;
+        padding: 12px;
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
+}
     </style>
 </head>
 <body>
