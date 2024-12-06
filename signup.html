@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Harmony Haven</title>
+    <style>
+        /* Reset margin and padding */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Full-screen video background */
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Sign-up form container - transparent background */
+        .signup-container {
+            background-color: rgba(255, 255, 255, 0.8); /* More transparent background */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 350px;
+            z-index: 1;
+            position: relative;
+            margin: 100px auto;
+        }
+
+        /* Title of the form */
+        .signup-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Input fields styling */
+        .signup-container input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* Label styling */
+        .signup-container label {
+            font-size: 14px;
+            color: #333;
+        }
+
+        /* Button styling */
+        .signup-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #6a9d68;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Hover effect on the button */
+        .signup-container button:hover {
+            background-color: #6a9d68;
+        }
+
+        /* Link for login page */
+        .signup-container .login-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Styling for the login link */
+        .signup-container .login-link a {
+            color: #6a9d68;
+            text-decoration: none;
+        }
+
+        /* Hover effect on the login link */
+        .signup-container .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Terms and conditions checkbox */
+        .terms-checkbox, .newsletter-checkbox {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 15px; /* Spacing between checkboxes */
+            margin-bottom: 10px;
+        }
+
+        .terms-checkbox input, .newsletter-checkbox input {
+            margin-right: 10px;
+        }
+
+        /* Required fields indication */
+        .required {
+            color: red;
+        }
+
+        /* Notification style */
+        .notification {
+            background-color: #6a9d68;
+            color: white;
+            padding: 15px;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            border-radius: 5px;
+            display: none;
+            z-index: 1000;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Video background -->
+    <video class="video-background" autoplay loop muted>
+        <source src="wideo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Sign-up Form -->
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form id="signup-form" action="javascript:void(0);">
+            <label for="username">Username <span class="required">*</span></label>
+            <input type="text" id="username" name="username" placeholder="Username" required>
+
+            <label for="email">Email <span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <label for="password">Password <span class="required">*</span></label>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+
+            <!-- Newsletter and Terms checkboxes in the same row -->
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+                <div class="newsletter-checkbox">
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <label for="newsletter">Sign up for our newsletter</label>
+                </div>
+
+                <div class="terms-checkbox">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">
+                        I have read and agree to the <a href="terms.html" target="_blank">terms and conditions</a> <span class="required">*</span>
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <div class="login-link">
+            <p>Already have an account? <a href="login.html">Log in</a></p>
+        </div>
+    </div>
+
+    <!-- Notification message -->
+    <div id="notification" class="notification">
+        Registration successful! You can now start shopping.
+    </div>
+
+    <script>
+        // Handle form submission
+        document.getElementById("signup-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Simulate successful registration and show notification
+            document.getElementById("notification").style.display = "block";
+            setTimeout(function() {
+                // Hide notification after 3 seconds
+                document.getElementById("notification").style.display = "none";
+                // Redirect to homepage (index.html)
+                window.location.href = "index.html";
+            }, 3000);
+        });
+    </script>
+
+</body>
+</html>

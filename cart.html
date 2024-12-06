@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmony Haven</title>
+    <style>
+         /* Resetowanie */
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(90deg, #D7ECD9, #F8EFE8);
+            color: #4A4A4A;
+        }
+
+        /* Nagłówek */
+        .shopping-cart-section {
+            text-align: center;
+            front-size: 2rem;
+            front-weight: bold;
+            margin-bottom: 40px;
+
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(90deg, #A8D5BA, #F0E8C1);
+            color: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    
+        header .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4A4A4A;
+            text-align: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: #4A4A4A;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: #6A9D68;
+        }
+
+        .header-buttons button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #F8EFE8;
+            color: #6A9D68;
+            border: 1px solid #6A9D68;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header-buttons button:hover {
+            background-color: #6A9D68;
+            color: white;
+        }
+
+        /* Tło wideo na stronie głównej */
+        .hero {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #4A4A4A;
+            text-align: center;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.8);
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-content button {
+            padding: 10px 20px;
+            background-color: #6A9D68;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .hero-content button:hover {
+            background-color: #4A804D;
+        }
+
+        /* Sekcje */
+        section {
+            padding: 40px 20px;
+            background: linear-gradient(90deg, #D7ECD9, #F8EFE8);
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 1200px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Produkty */
+        .products {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .product-card {
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+            background-color: #F8EFE8;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .bold-text {
+            font-weight: 600;
+        }
+        /* Koszyk */
+        #cart {
+            background: linear-gradient(90deg, #D7ECD9, #F8EFE8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #cart ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #cart ul li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        #cart ul li button {
+            padding: 5px 10px;
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #cart ul li button:hover {
+            background-color: #c9302c;
+        }
+
+        #total-price {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Formularze */
+        form input, form textarea, form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .add-to-cart {
+            background-color: #6A9D68; /* Zielony kolor tła */
+            color: white; /* Biały tekst */
+            padding: 10px 20px; /* Wewnętrzne odstępy (góra-dół, lewo-prawo) */
+            border: none; /* Usuwa domyślną ramkę */
+            border-radius: 5px; /* Zaokrąglenie rogów */
+            cursor: pointer; /* Zmienia kursor na "rączkę" */
+            font-size: 16px; /* Wielkość tekstu */
+            transition: background-color 0.3s ease; /* Płynna zmiana koloru */
+        }
+
+        /* Efekt po najechaniu kursorem */
+        .add-to-cart:hover {
+            background-color: #6A9D68; /* Ciemniejszy zielony */
+        }
+
+        /* Styl dla aktywnego przycisku (kliknięcie) */
+        .add-to-cart:active {
+            background-color: #3e8e41;
+            transform: scale(0.98); /* Lekko zmniejsza przycisk */
+        }
+        /* Stopka */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(90deg, #A8D5BA, #F0E8C1);
+            color: #4A4A4A;
+        }
+       
+        #tea-of-the-month {
+    padding: 40px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+#tea-of-the-month h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #6A9D68;
+}
+
+.tea-of-the-month-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.tea-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.tea-details {
+    max-width: 400px;
+    text-align: left;
+}
+
+.tea-details h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.tea-details p {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 18px;
+    color: #6A9D68;
+}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .cart-container {
+            margin: 20px auto;
+            width: 80%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-container h2 {
+            text-align: center;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-item img {
+            width: 50px;
+        }
+
+        .cart-item div {
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        .cart-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .cart-footer .total {
+            font-weight: bold;
+        }
+
+        .checkout-btn {
+            background-color: #6A9D68;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            width: 100%;
+        }
+
+        .checkout-btn:hover {
+            background-color: #6A9D68;
+        }
+
+        .form-container {
+            display: none; /* Initially hidden */
+            margin: 20px auto;
+            width: 80%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-group button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .payment-methods input {
+            margin-right: 10px;
+        }
+
+        .empty-cart {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+   <header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="offer.html">Our Teas</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <!-- In your index.html file -->
+<div class="header-buttons">
+<!-- Link to Sign Up page -->
+<a href="signup.html"><button>Sign Up</button></a>
+<!-- Link to Log In page -->
+<a href="login.html"><button>Log In</button></a>
+    <a href="cart.html"><button>Cart</button></a>
+    </div>
+    </header>
+
+    <!-- Koszyk -->
+     <div class="shopping-cart-section">
+        <h1>Shopping Cart</h1>
+     </div>
+    <div class="cart-container" id="cart-container">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+
+        <div class="cart-footer">
+            <p class="total">Total: $0.00</p>
+            <button class="checkout-btn" onclick="goToCheckout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Formularz zamówienia -->
+    <div class="form-container" id="form-container">
+        <h2>Shipping & Payment</h2>
+        <form id="checkout-form">
+            <div class="form-group">
+                <label for="name">Full Name <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Shipping Address <span class="required">*</span></label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="payment-method">Payment Method <span class="required">*</span></label>
+                <div class="payment-methods">
+                    <div>
+                        <input type="radio" id="credit-card" name="payment-method" value="Credit Card" required>
+                        <label for="credit-card">Credit Card</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="paypal" name="payment-method" value="PayPal" required>
+                        <label for="paypal">PayPal</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="bank-transfer" name="payment-method" value="Bank Transfer" required>
+                        <label for="bank-transfer">Bank Transfer</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" id="submit-btn">Place Order</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Sample products data
+        const products = [
+            { id: 1, name: "Green Tea", price: 5.00, image: "https://via.placeholder.com/100" },
+            { id: 2, name: "Black Tea", price: 4.50, image: "https://via.placeholder.com/100" }
+        ];
+
+        // Cart initialization
+        const cart = [];
+
+        function renderCart() {
+            const cartItemsContainer = document.getElementById("cart-items");
+            cartItemsContainer.innerHTML = ''; // Clear the cart items
+
+            cart.forEach(item => {
+                const cartItemElement = document.createElement('div');
+                cartItemElement.classList.add('cart-item');
+                cartItemElement.innerHTML = 
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="item-info">
+                        <p><strong>${item.name}</strong></p>
+                        <p>Price: $${item.price}</p>
+                        <p>Quantity: ${item.quantity}</p>
+                    </div>
+                ;
+                cartItemsContainer.appendChild(cartItemElement);
+            });
+
+            updateTotal();
+        }
+
+        function updateTotal() {
+            const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            document.querySelector(".total").textContent = Total: $${totalPrice.toFixed(2)};
+        }
+
+        // Handle checkout form submission
+        document.getElementById("checkout-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const address = document.getElementById("address").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+
+            // Process the order (for now just log the information)
+            console.log("Order Details:", { name, address, email, phone, paymentMethod });
+            alert("Thank you for your order! Your order is being processed.");
+
+            // Redirect to the confirmation page
+            window.location.href = "order-confirmation.html"; // You can create a confirmation page
+        });
+        // Go to the checkout form
+        function goToCheckout() {
+            document.getElementById("cart-container").style.display = "none";
+            document.getElementById("form-container").style.display = "block";
+        }
+
+        // Example: Adding products to cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            }
+            <footer>
+        <p>© 2024 Harmony Haven. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+        </div>
+    </footer>

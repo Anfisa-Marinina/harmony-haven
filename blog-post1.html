@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmony Haven</title>
+    <style>
+        /* Resetowanie */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(90deg, #D7ECD9, #F8EFE8);
+            color: #4A4A4A;
+        }
+
+        /* Nagłówek */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(90deg, #A8D5BA, #F0E8C1);
+            color: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4A4A4A;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: #4A4A4A;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: #6A9D68;
+        }
+
+        .header-buttons button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #F8EFE8;
+            color: #6A9D68;
+            border: 1px solid #6A9D68;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header-buttons button:hover {
+            background-color: #6A9D68;
+            color: white;
+        }
+
+        /* Tło wideo na stronie głównej */
+        .hero {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #4A4A4A;
+            text-align: center;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.8);
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-content button {
+            padding: 10px 20px;
+            background-color: #6A9D68;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .hero-content button:hover {
+            background-color: #4A804D;
+        }
+
+        /* Sekcje */
+        section {
+            padding: 40px 20px;
+            background: linear-gradient(90deg, #D7ECD9, #F8EFE8);
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 1200px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Produkty */
+        .products {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .product-card {
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+            background-color: #F8EFE8;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .bold-text {
+            font-weight: 600;
+        }
+        /* Koszyk */
+        #cart {
+            background: linear-gradient(90deg, #D7ECD9, #F8EFE8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #cart ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #cart ul li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        #cart ul li button {
+            padding: 5px 10px;
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #cart ul li button:hover {
+            background-color: #c9302c;
+        }
+
+        #total-price {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Formularze */
+        form input, form textarea, form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Stopka */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(90deg, #A8D5BA, #F0E8C1);
+            color: #4A4A4A;
+        }
+
+/* Ogólny styl strony */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Nagłówek */
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 20px;
+}
+
+/* Zdjęcie */
+img {
+    display: block;
+    max-width: 50%;
+    height: auto;
+    margin: 0 auto 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Opis */
+.description {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #555;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+/* Przycisk powrotu */
+.back-button {
+    display: inline-block;
+    text-decoration: none;
+    background: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.back-button:hover {
+    background: #0056b3;
+}
+</style>
+<body>
+  <header>
+    <h1>How to Brew Tea to Unlock Its Full Flavor</h1>
+  </header>
+  
+  <section class="article">
+    <img src="parzenie.jpg" alt="Tea Brewing" class="article-img">
+    <p>Brewing tea may seem simple, but there are a few key factors that can elevate your cup to perfection. First, the water temperature plays a critical role. For black tea, use water that's just boiled, around 100°C (212°F). Green tea, however, should be brewed at a lower temperature, around 70–80°C (158–176°F), to avoid bitterness. For white tea, you’ll want water that's just below boiling, at around 85°C (185°F).</p>    </p>
+    <p>The steeping time also matters – usually 2 to 5 minutes, depending on the type of tea. Too little time, and the tea may taste weak; too much, and it can become overly bitter. To get the best out of your tea, measure the leaves: typically, 1 teaspoon of loose leaves per cup is ideal. Don’t forget to adjust to your personal preference! Once your tea is ready, pour it through a strainer if you’re using loose leaves, and enjoy the rich aroma that fills the air.</p>
+    <p>‍Experiment with different types and remember: perfecting your brewing method is all about finding what works best for you!</p>
+    <a href="blog.html">Back to Blog</a>
+  </section>
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmony Haven</title>
+    <style>
+        /* Resetowanie */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(90deg, #D7ECD9, #F8EFE8);
+            color: #4A4A4A;
+        }
+
+        /* Nagłówek */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(90deg, #A8D5BA, #F0E8C1);
+            color: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4A4A4A;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: #4A4A4A;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: #6A9D68;
+        }
+
+        .header-buttons button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #F8EFE8;
+            color: #6A9D68;
+            border: 1px solid #6A9D68;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header-buttons button:hover {
+            background-color: #6A9D68;
+            color: white;
+        }
+
+        /* Tło wideo na stronie głównej */
+        .hero {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #4A4A4A;
+            text-align: center;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.8);
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-content button {
+            padding: 10px 20px;
+            background-color: #6A9D68;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .hero-content button:hover {
+            background-color: #4A804D;
+        }
+
+        /* Sekcje */
+        section {
+            padding: 40px 20px;
+            background: linear-gradient(90deg, #D7ECD9, #F8EFE8);
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 1200px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+
+        /* Produkty */
+        .products {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .product-card {
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+            background-color: #F8EFE8;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .bold-text {
+            font-weight: 600;
+        }
+        /* Koszyk */
+        #cart {
+            background: linear-gradient(90deg, #D7ECD9, #F8EFE8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #cart ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #cart ul li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        #cart ul li button {
+            padding: 5px 10px;
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #cart ul li button:hover {
+            background-color: #c9302c;
+        }
+
+        #total-price {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Formularze */
+        form input, form textarea, form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .add-to-cart {
+            background-color: #6A9D68; /* Zielony kolor tła */
+            color: white; /* Biały tekst */
+            padding: 10px 20px; /* Wewnętrzne odstępy (góra-dół, lewo-prawo) */
+            border: none; /* Usuwa domyślną ramkę */
+            border-radius: 5px; /* Zaokrąglenie rogów */
+            cursor: pointer; /* Zmienia kursor na "rączkę" */
+            font-size: 16px; /* Wielkość tekstu */
+            transition: background-color 0.3s ease; /* Płynna zmiana koloru */
+        }
+
+        /* Efekt po najechaniu kursorem */
+        .add-to-cart:hover {
+            background-color: #6A9D68; /* Ciemniejszy zielony */
+        }
+
+        /* Styl dla aktywnego przycisku (kliknięcie) */
+        .add-to-cart:active {
+            background-color: #3e8e41;
+            transform: scale(0.98); /* Lekko zmniejsza przycisk */
+        }
+        /* Stopka */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(90deg, #A8D5BA, #F0E8C1);
+            color: #4A4A4A;
+        }
+    </style>
+</head>
+<body>
+    <!-- Nagłówek -->
+    <header>
+        <div class="logo">Harmony Haven</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="offer.html">Our Teas</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- In your index.html file -->
+<div class="header-buttons">
+    <!-- Link to Sign Up page -->
+    <a href="signup.html"><button>Sign Up</button></a>
+    <!-- Link to Log In page -->
+    <a href="login.html"><button>Log In</button></a>
+        <a href="cart.html"><button>Cart</button></a>
+        </div>
+        </header>
+    <section id="offer">
+        <h2>Our Teas</h2>
+        <div class="category">
+            <h2>Floral Teas</h2>
+        <ul class="tea-list">
+            <li class="tea-item">
+                <h3>Orchid Blossom</h3>
+                <p>A delicate and elegant tea with a light, floral flavor.</p>
+                <p class="price">Price: 25 $</p>
+                <button class="add-to-cart">Add to cart</button>
+            </li>
+            <li class="tea-item">
+                <h3>Rose with Hibiscus</h3>
+                <p>A beautifully fragrant tea with an intense color and a slight tartness.</p>
+                <p class="price">Price: 30 $</p>
+                <button class="add-to-cart">Add to cart</button>
+            </li>
+        </ul>
+    </div>
+    <!-- Category: Fruity Teas -->
+    <div class="category">
+        <h2>Fruity Teas</h2>
+        <ul class="tea-list">
+            <li class="tea-item">
+                <h3>Tropical Delight</h3>
+                <p>A refreshing mix of mango, pineapple, and passion fruit.</p>
+                <p class="price">Price: 28 $</p>
+                <button class="add-to-cart">Add to cart</button>
+            </li>
+            <li class="tea-item">
+                <h3>Pomegranate and Strawberry</h3>
+                <p>A fruity blend with a sweet-tart balance of flavors.</p>
+                <p class="price">Price: 26 $</p>
+                <button class="add-to-cart">Add to cart</button>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Category: Unique Teas -->
+    <div class="category">
+        <h2>Unique Teas</h2>
+        <ul class="tea-list">
+            <li class="tea-item">
+                <h3>Matcha with Activated Charcoal</h3>
+                <p>A detoxifying blend of matcha with the cleansing properties of charcoal.</p>
+                <p class="price">Price: 35 $</p>
+                <button class="add-to-cart">Add to cart</button>
+            </li>
+            <li class="tea-item">
+                <h3>Blue Oolong</h3>
+                <p>A semi-fermented tea with a delicate flavor and a subtle blue tint in the brew.</p>
+                <p class="price">Price: 32 $</p>
+                <button class="add-to-cart">Add to cart</button>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Category: Herbal Teas -->
+    <div class="category">
+        <h2>Herbal Teas</h2>
+        <ul class="tea-list">
+            <li class="tea-item">
+                <h3>Mint and Lime Yerba Mate</h3>
+                <p>A refreshing and invigorating blend with the energizing benefits of yerba mate.</p>
+                <p class="price">Price: 27 $</p>
+                <button class="add-to-cart">Add to cart</button>
+            </li>
+            <li class="tea-item">
+                <h3>Tulsi with Turmeric</h3>
+                <p>An Ayurvedic tea blend with the health benefits of tulsi and turmeric.</p>
+                <p class="price">Price: 29 $</p>
+                <button class="add-to-cart">Add to cart</button>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Category: Premium Teas -->
+    <div class="category">
+        <h2>Premium Teas</h2>
+        <ul class="tea-list">
+            <li class="tea-item">
+                <h3>Sencha Sakura</h3>
+                <p>A premium Japanese green tea blended with cherry blossoms for a delicate flavor.</p>
+                <p class="price">Price: 40 $</p>
+                <button class="add-to-cart">Add to cart</button>
+            </li>
+            <li class="tea-item">
+                <h3>Pu-erh with Chocolate and Chili</h3>
+                <p>A unique earthy tea with a spicy kick and a touch of chocolate.</p>
+                <p class="price">Price: 38 $</p>
+                <button class="add-to-cart">Add to cart</button>
+            </li>
+        </ul>
+    </div>
+    </section>
+    <script src="script.js"></script>
+    <footer>
+        <p>© 2024 Harmony Haven. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+        </div>
+    </footer>
+</body>
+</html>

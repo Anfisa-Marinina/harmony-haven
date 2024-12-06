@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmony Haven</title>
+    <style>
+        /* Resetowanie */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(90deg, #D7ECD9, #F8EFE8);
+            color: #4A4A4A;
+        }
+
+        /* Nagłówek */
+        .hero-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            flex-direction: column;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(90deg, #A8D5BA, #F0E8C1);
+            color: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4A4A4A;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: #4A4A4A;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: #6A9D68;
+        }
+
+        .header-buttons button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #F8EFE8;
+            color: #6A9D68;
+            border: 1px solid #6A9D68;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header-buttons button:hover {
+            background-color: #6A9D68;
+            color: white;
+        }
+
+        /* Animacje */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background: linear-gradient(90deg, #D7ECD9, #F8EFE8);
+            }
+            50% {
+                background: linear-gradient(90deg, #F8EFE8, #D7ECD9);
+            }
+            100% {
+                background: linear-gradient(90deg, #D7ECD9, #F8EFE8);
+            }
+        }
+
+        .hero {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #4A4A4A;
+            text-align: center;
+            animation: gradientShift 10s ease-in-out infinite;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: absolute;
+            top: 40%;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .hero-content button {
+            padding: 10px 20px;
+            background-color: #6A9D68;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            top: 70%;
+            animation: slideUp 1s ease-out;
+        }
+
+        .hero-content button:hover {
+            background-color: #4A804D;
+            transform: scale(1.1);
+        }
+        /* Responsywność */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content button {
+                font-size: 1rem;
+                padding: 10px 18px;
+            }
+
+            .container h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content button {
+                font-size: 1rem;
+                padding: 8px 16px;
+            }
+
+            .container h2 {
+                font-size: 1.6rem;
+            }
+        }
+        @keyframes slideUp {
+            0% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        /* Sekcje */
+        section {
+            padding: 40px 20px;
+            background: linear-gradient(90deg, #D7ECD9, #F8EFE8);
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 1200px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Produkty */
+        .products {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .product-card {
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+            background-color: #F8EFE8;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .bold-text {
+            font-weight: 600;
+        }
+        /* Koszyk */
+        #cart {
+            background: linear-gradient(90deg, #D7ECD9, #F8EFE8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #cart ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #cart ul li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        #cart ul li button {
+            padding: 5px 10px;
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #cart ul li button:hover {
+            background-color: #c9302c;
+        }
+
+        #total-price {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Formularze */
+        form input, form textarea, form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Stopka */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(90deg, #A8D5BA, #F0E8C1);
+            color: #4A4A4A;
+        }
+       
+        #tea-of-the-month {
+    padding: 40px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+#tea-of-the-month h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #6A9D68;
+}
+
+.tea-of-the-month-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.tea-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.tea-details {
+    max-width: 400px;
+    text-align: left;
+}
+
+.tea-details h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.tea-details p {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 18px;
+    color: #6A9D68;
+}
+</style>
+</head>
+<body>
+    <!-- Nagłówek -->
+    <header>
+        <div class="logo">Harmony Haven</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="offer.html">Our Teas</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- In your index.html file -->
+<div class="header-buttons">
+    <!-- Link to Sign Up page -->
+    <a href="signup.html"><button>Sign Up</button></a>
+    <!-- Link to Log In page -->
+    <a href="login.html"><button>Log In</button></a>
+        <a href="cart.html"><button>Cart</button></a>
+        </div>
+        </header>
+        <!-- Główna Sekcja -->
+        <div class="hero-content">
+            <video autoplay loop muted>
+                <source src="tea.mp4" type="video/mp4">
+            </video>
+            <h1>Your daily harmony in a cup of tea</h1>
+            <a href="offer.html">
+            <button>Check out our offer</button>
+        </a>
+        </div>
+    <section id="tea-of-the-month">
+        <h2>Tea of the Month</h2>
+        <div class="tea-of-the-month-card">
+            <img src="herbata1.jpg" alt="Tea of the Month" class="tea-image"/>
+            <div class="tea-details">
+                <h3>Mint & Lime Yerba Mate</h3>
+                <p>Experience the refreshing taste of Mint & Lime Yerba Mate, a perfect blend for relaxation and energy.</p>
+                <p class="price">$27</p>
+            </div>
+        </div>
+    </section>
+    </header>
+    <footer>
+        <p>© 2024 Harmony Haven. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+        </div>
+    </footer>
+</body>
+</html>

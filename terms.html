@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmony Haven</title>
+    <style>
+        /* Resetowanie */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(90deg, #D7ECD9, #F8EFE8);
+            color: #4A4A4A;
+        }
+        
+        /* Nagłówek */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(90deg, #A8D5BA, #F0E8C1);
+            color: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4A4A4A;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: #4A4A4A;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: #6A9D68;
+        }
+
+        .header-buttons button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #F8EFE8;
+            color: #6A9D68;
+            border: 1px solid #6A9D68;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header-buttons button:hover {
+            background-color: #6A9D68;
+            color: white;
+        }
+
+        /* Tło wideo na stronie głównej */
+        .hero {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #4A4A4A;
+            text-align: center;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.8);
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-content button {
+            padding: 10px 20px;
+            background-color: #6A9D68;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .hero-content button:hover {
+            background-color: #4A804D;
+        }
+
+        /* Sekcje */
+        section {
+            padding: 40px 20px;
+            background: linear-gradient(90deg, #D7ECD9, #F8EFE8);
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 1200px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Produkty */
+        .products {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .product-card {
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+            background-color: #F8EFE8;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .bold-text {
+            font-weight: 600;
+        }
+        /* Koszyk */
+        #cart {
+            background: linear-gradient(90deg, #D7ECD9, #F8EFE8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #cart ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #cart ul li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        #cart ul li button {
+            padding: 5px 10px;
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #cart ul li button:hover {
+            background-color: #c9302c;
+        }
+
+        #total-price {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Formularze */
+        form input, form textarea, form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Stopka */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(90deg, #A8D5BA, #F0E8C1);
+            color: #4A4A4A;
+        }
+    </style>
+</head>
+<body>
+    <!-- Nagłówek -->
+    <header>
+        <div class="logo">Harmony Haven</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="offer.html">Our Teas</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- In your index.html file -->
+<div class="header-buttons">
+    <!-- Link to Sign Up page -->
+    <a href="signup.html"><button>Sign Up</button></a>
+    <!-- Link to Log In page -->
+    <a href="login.html"><button>Log In</button></a>
+        <a href="cart.html"><button>Cart</button></a>
+        </div>
+        </header>
+        <div class="terms-and-conditions">
+            <h1>Terms and conditions of the "Harmony Haven" online store</h1>
+            <h2>1. General provisions</h2>
+            <p>1.1 These terms and conditions define the rules for using the "Harmony Haven" online store, available at www.harmonyhaven.com.</p>
+            <p>1.2. The store is owned by [Company Name], located at [Address], VAT ID: [Number], REGON: [Number].</p>
+        <p>1.3. You can contact the store support team via email: support@harmonyhaven.com or by phone: +48 123 456 789.</p>
+        <p>1.4. By using the online store, the Customer accepts these terms and conditions.</p>
+
+        <h2>2. Definitions</h2>
+        <p>2.1. Customer – a natural person, legal entity, or organizational unit making purchases in the store.</p>
+        <p>2.2. Seller – the owner of the "Harmony Haven" online store.</p>
+        <p>2.3. Product – goods offered in the online store.</p>
+        <p>2.4. Customer Account – an individual account created by the Customer in the online store.</p>
+        <p>2.5. Order – a declaration of purchase made by the Customer through the online store.</p>
+
+        <!-- Add the rest of the terms and conditions here following the same structure -->
+
+        <h2>10. Final Provisions</h2>
+        <p>10.1. These terms and conditions are effective from the date of publication on the store's website.</p>
+        <p>10.2. The Seller reserves the right to amend the terms and conditions. Customers are bound by the version of the terms and conditions in force at the time of placing the order.</p>
+        <p>10.3. Matters not regulated by these terms and conditions shall be governed by the provisions of the Civil Code and other applicable legal regulations.</p>
+
+        <h2>Thank you for choosing "Harmony Haven"! Happy shopping!</h2>
+    </div>
+    </body>
+    </html>
